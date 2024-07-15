@@ -9,13 +9,18 @@ import java.util.logging.Level;
 import lombok.NonNull;
 import lombok.extern.java.Log;
 import okhttp3.Response;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
+@Service
 @Log
 public class ProductServiceImpl implements ProductService {
 
   private final ObjectMapper objectMapper = new ObjectMapper();
   private final HttpClient httpClient;
 
+  @Autowired
   public ProductServiceImpl(HttpClient httpClient) {
     this.httpClient = httpClient;
   }
