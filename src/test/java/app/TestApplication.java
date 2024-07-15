@@ -100,4 +100,19 @@ public class TestApplication {
 
       productService.createProduct(productPayload);
     }
+
+
+  public static void main(String[] args) {
+    HttpClient httpClient = new HttpClientImpl("http://example.com");
+    ProductService productService = new ProductServiceImpl(httpClient);
+
+    ProductPayload productPayload = new ProductPayload("Samsung Galaxy", 399.99);
+
+    try {
+      productService.createProduct(productPayload);
+      System.out.println("Product created successfully.");
+    } catch (RequestException e) {
+      System.err.println("Failed to create product: " + e.getMessage());
+    }
+  }
 }
